@@ -3,7 +3,7 @@ require 'test_helper'
 class VoterTest < ActiveSupport::TestCase
 
   def test_association_between_voter_and_vote
-    vr = Voter.create(name: "Sam")
+    vr = Voter.create(name: "Donatello", party: "TMNT")
     vt = Vote.create()
 
     vr.vote = vt
@@ -11,7 +11,7 @@ class VoterTest < ActiveSupport::TestCase
   end
 
   def test_voter_has_name
-    vr = Voter.create(name: "Sam")
-    assert "Sam", vr
+    vr = Voter.create(name: "Donatello")
+    assert "Donatello", vr
   end
 end
