@@ -7,7 +7,7 @@ class VoterTest < ActiveSupport::TestCase
     vt = Vote.create()
 
     vr.vote = vt
-    assert vr.vote == vt
+    assert vr.reload.vote == vt
   end
 
   def test_voter_has_name
