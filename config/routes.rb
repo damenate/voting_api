@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-  get 'votes/create'
-  get 'votes/destroy'
+  post 'votes/create'
+  delete 'votes/destroy'
   get 'votes/index'
-  get 'voters/create'
+
+  post 'voters/create'
   get 'voters/show'
-  get 'voters/update'
+  patch 'voters/update'
+  
+
   get 'candidates/index'
   get 'candidates/show'
-
   post 'candidates/create'
 
   # The priority is based upon order of creation: first created -> highest priority.

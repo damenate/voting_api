@@ -9,8 +9,8 @@ class VotersController < ApplicationController
   end
 
   def show
-    voter = Voter.find(params[:id])
-    if voter.access_token == params[:access_token]
+    voter = Voter.find_by(access_token:params[:access_token])
+      if voter.access_token == params[:access_token]
       render json: voter.to_json
     else
     render json: "Access Denied!"
@@ -18,7 +18,7 @@ class VotersController < ApplicationController
   end
 
   def update
-    voter = Voter.find(params[:id])
+    voter = Voter.find_by(access_token:params[:access_token])
     voter.name = params[:name] if params[:name]
     voter.party = params[:party] if params[:party]
       if voter.save

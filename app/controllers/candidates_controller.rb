@@ -1,9 +1,10 @@
 class CandidatesController < ApplicationController
   def index
-    render json: "Hi"
+    render json: Candidate.all.to_json
   end
 
   def show
-    render json: "Hi"
+    id = params[:id]
+    render json: Candidate.find(id).to_json
   end
 end

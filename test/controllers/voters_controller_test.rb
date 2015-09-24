@@ -8,15 +8,21 @@ class VotersControllerTest < ActionController::TestCase
 
   test "should get show" do
     get :show
-    assert_response :success
+    refute_response :success
   end
 
   test "should get update" do
     get :update
-    assert_response :success
+    refute_response :success
   end
 
   def test_authentication_you_are_voter
-    v1 = Voter.create(name: "Leonardo", party: "TMNT" id:param([param]))
+    v = Voter.create(name:"Batman")
+    assert v
   end
+
+  # def test_voter_has_one_vote
+  #   get :create
+  #
+  # end
 end
