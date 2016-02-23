@@ -7,22 +7,39 @@ class VotersControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
-    get :show
-    refute_response :success
+    get :show, id: voters(:one).id, access_token: voters(:one).access_token
+    assert_response :success
+
+    assert response.body.include?("James")
   end
 
   test "should get update" do
-    get :update
-    refute_response :success
+    patch :update, id: voters(:one).id, access_token: voters(:one).access_token, party: "Dog"
+
+    assert_response :success
   end
 
-  def test_authentication_you_are_voter
-    v = Voter.create(name:"Batman")
-    assert v
-  end
-
-  # def test_voter_has_one_vote
-  #   get :create
+  # test "show requires correct token" do
+  #   get :show, id: voters(:james).id, access_token: voters(:james).access_token
+  #   assert_response :success
   #
+  #   assert response.body.include?("James")
+  #   assert response.body.include?("Ed")
   # end
+  # test "show update works" do
+  #   patch :update, id: voters(:james).id, access_token: voters(:james).access_token, name: "John"
+  #   assert_response :success
+  #
+  #   refute response.body.include?("James")
+  #   assert response.body.include?("John")
+  #   assert response.body.include?voters(:james).party
+  # end
+  #
+  # test "show update needs correct name" do
+  #   patch :update, id: voters(:james).id, access_token: voters(:james).access_token, name: voters(:ed).name
+  #   assert_response :success
+  #
+  #   assert response.body.include?voters("No Update for YOU!")
+  # end
+
 end

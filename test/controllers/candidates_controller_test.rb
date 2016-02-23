@@ -7,8 +7,8 @@ class CandidatesControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
-    get :show
-    refute_response :success
+    get :show, id: candidates(:one).id
+    assert_response :success
   end
 
 end

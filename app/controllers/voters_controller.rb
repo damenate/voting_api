@@ -1,31 +1,34 @@
 class VotersController < ApplicationController
+
   def create
-    voter = Voter.new(name: params[:name])
+    voter = Voter.new(name: params[:name], party: params[:party])
     if voter.save
-      render json: voter.to_json
+      render json: voter
     else
     render json: voter.errors
     end
   end
 
   def show
-    voter = Voter.find_by(access_token:params[:access_token])
+    voter = Voter.find(params[:id])
       if voter.access_token == params[:access_token]
-      render json: voter.to_json
+      render json: voter
     else
     render json: "Access Denied!"
     end
   end
 
   def update
-    voter = Voter.find_by(access_token:params[:access_token])
-    voter.name = params[:name] if params[:name]
-    voter.party = params[:party] if params[:party]
+    voter = Voter.find(params[:id])
+    #voter = Voter.find_by(access_token:params[:access_token])
+    if voter.access_token == params[:access_token]
+      #voter.update(name: params[:name], party: params[:party])
+      voter.name = params[:name] if params[:name]
+      voter.party = params[:party] if params[:party]
       if voter.save
-        if voter.access_token == params[:access_token]
-          render json: voter.to_json
+          render json: voter
         else
-        render json: "Access Denied!"
+        render json: voter.errors
       end
     else
       render json: "No Update for YOU!"

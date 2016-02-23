@@ -1,10 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  party: MyString
-  access_token: blah
-two:
-  name: MyString
-  party: MyString
+  name: James
+  party: Elk
   access_token: hah
+two:
+  name: Ed
+  party: Horse
+  access_token: haa
