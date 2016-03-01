@@ -5,6 +5,26 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-vr = Voter.create!(name: "Don", party: "TMNT")
-can = Candidate.create!(name: "Batman", party: "JL", hometown: "Gotham", district: "9")
-vt = Vote.create!(voter: vr, candidate: can)
+party = ["Democratic", "Republican", "Independent", "TRUMP"]
+10.times do
+    Candidate.create(
+    name: Faker::Name.name,
+    party: party.sample,
+    hometown: Faker::Address.city,
+    district: rand(1..100)
+    )
+  end
+
+# 200.times do
+#     Vote.create(
+#     voter: Faker::Name.name,
+#     candidate: Faker::Name.name
+#     )
+#   end
+
+200.times do
+  Voter.create(
+  name: Faker::Name.name,
+  party: party.sample
+  )
+  end

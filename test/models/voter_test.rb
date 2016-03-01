@@ -14,4 +14,10 @@ class VoterTest < ActiveSupport::TestCase
     vr = Voter.create(name: "Donatello")
     assert "Donatello", vr
   end
+
+  def test_voter_token
+    vr = Voter.create(name:"Donald", party: "Democratic")
+    assert vr.access_token
+  end
+
 end

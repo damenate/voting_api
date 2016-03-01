@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'voters/create'
   get 'voters/show'
   patch 'voters/update'
+  get 'voters/index'
 
 
   get 'candidates/index'

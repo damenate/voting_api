@@ -1,10 +1,12 @@
 class VotesController < ApplicationController
   def create
-    render json: "yo"
+    render json: Vote.all.to_json
   end
 
   def destroy
-    render json: "yo"
+    v = Vote.find(params[:id])
+    render v.destroy
+    render json: "Vote Destroyed"
   end
 
   def index

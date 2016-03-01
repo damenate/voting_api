@@ -5,5 +5,6 @@ class AddAccessTokenToVoters < ActiveRecord::Migration
 
     Voter.all.each do |v|
       v.update!(access_token: SecureRandom.hex)
+    end
   end
 end
